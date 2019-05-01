@@ -17,7 +17,7 @@ interface CountriesMVP {
     interface Model {
         val countries: ArrayList<CountryItem>
 
-        fun loadCountriesNames(loadingListener: OnLoadingCompleteListener)
+        fun loadCountries(loadingListener: OnLoadingCompleteListener)
 
         interface OnLoadingCompleteListener {
             fun onComplete()
