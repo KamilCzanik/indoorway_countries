@@ -1,5 +1,7 @@
 package xyz.czanik.indoorway_countries.countries
 
+import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
+
 interface CountriesMVP {
 
     interface View {
@@ -22,10 +24,5 @@ interface CountriesMVP {
         val countries: ArrayList<CountryItem>
 
         fun loadCountries(loadingListener: OnLoadingCompleteListener)
-
-        interface OnLoadingCompleteListener {
-            fun onComplete()
-            fun onFailure(message: String)
-        }
     }
 }
