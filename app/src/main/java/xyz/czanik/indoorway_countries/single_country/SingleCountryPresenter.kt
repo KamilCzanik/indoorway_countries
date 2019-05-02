@@ -1,8 +1,9 @@
 package xyz.czanik.indoorway_countries.single_country
 
 import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
+import javax.inject.Inject
 
-class SingleCountryPresenter(
+class SingleCountryPresenter @Inject constructor(
     override val view: SingleCountryMVP.View,
     override val model: SingleCountryMVP.Model) : SingleCountryMVP.Presenter {
 
