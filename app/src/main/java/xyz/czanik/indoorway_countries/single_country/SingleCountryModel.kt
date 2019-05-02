@@ -1,7 +1,6 @@
 package xyz.czanik.indoorway_countries.single_country
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -25,23 +24,14 @@ class SingleCountryModel @Inject constructor(private val context: Context) : Sin
 
     override fun loadCountryData(countryCode: String, loadingListener: OnLoadingCompleteListener) {
         val countryUri = "https://restcountries.eu/rest/v2/alpha/$countryCode?fields=$NAME;$FLAG;$REGION;$CAPITAL;$LATLNG"
-        Log.d("COUNTRY_URI",countryUri)
+
         val request = JsonObjectRequest(
             Request.Method.GET,
             countryUri,
             null,
             Response.Listener<JSONObject> { json ->
                 try {
-                    val llArr = json.getJSONArray(LATLNG)
-
-                    country = ComplexCountry(
-                        json.getString(NAME),
-                        json.getString(FLAG),
-                        countryCode,
-                        json.getString(CAPITAL),
-                        json.getString(REGION),
-                        llArr.getLatLng())
-
+                    country = parseToComplexCountry(json,countryCode)
                     loadingListener.onComplete()
                 } catch (e: JSONException) { loadingListener.onFailure(e.message!!) }
             },
@@ -49,6 +39,16 @@ class SingleCountryModel @Inject constructor(private val context: Context) : Sin
 
         Volley.newRequestQueue(context).add(request)
     }
+
+    private fun parseToComplexCountry(jsonObject: JSONObject, countryCode: String) =
+        ComplexCountry(
+            jsonObject.getString(NAME),
+            jsonObject.getString(FLAG),
+            countryCode,
+            jsonObject.getString(CAPITAL),
+            jsonObject.getString(REGION),
+            jsonObject.getJSONArray(LATLNG).getLatLng())
+
 }
 
 fun JSONArray.getLatLng() = if(length() != 0) LatLng(getDouble(0),getDouble(1)) else LatLng(0.0,0.0)
