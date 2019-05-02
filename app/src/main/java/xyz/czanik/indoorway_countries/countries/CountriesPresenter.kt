@@ -30,7 +30,9 @@ class CountriesPresenter @Inject constructor(
     }
 
     override fun onSearch(input: String) {
-        val filteredCountries = model.countries.filter { it.name.toLowerCase().contains(input.toLowerCase()) }
+        val filteredCountries = model.countries.getCountriesWith(input)
         view.recyclerAdapter.countries = filteredCountries
     }
 }
+
+fun List<CountryItem>.getCountriesWith(string: String) = filter { it.name.toLowerCase().contains(string.toLowerCase()) }
