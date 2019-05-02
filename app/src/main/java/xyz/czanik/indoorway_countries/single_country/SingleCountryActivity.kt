@@ -2,10 +2,11 @@ package xyz.czanik.indoorway_countries.single_country
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
+import android.net.Uri.parse
 import android.os.Bundle
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou.justLoadImage
-import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.CameraUpdateFactory.newLatLng
+import com.google.android.gms.maps.CameraUpdateFactory.zoomTo
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import kotlinx.android.synthetic.main.activity_single_country.*
@@ -21,19 +22,20 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
 
     override var country: ComplexCountry = ComplexCountry()
        set(country) {
-           field = country
-           countryNameView.text = country.name
-           justLoadImage(this, Uri.parse(country.flag), countryFlag)
-           countryDetails.text = country.details
+           with(country) {
+               field = this
+               countryNameView.text = name
+               countryDetails.text = details
+               justLoadImage(this@SingleCountryActivity, parse(flag), countryFlag)
+           }
            mapView.getMapAsync(this)
         }
 
     override fun onMapReady(map: GoogleMap) {
-        val countryPos = CameraUpdateFactory.newLatLng(country.latLng)
-        val zoom = CameraUpdateFactory.zoomTo(5.0F)
-
-        map.moveCamera(countryPos)
-        map.moveCamera(zoom)
+        with(map) {
+            moveCamera(newLatLng(country.latLng))
+            moveCamera(zoomTo(5.0F))
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
