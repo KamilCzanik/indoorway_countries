@@ -2,17 +2,17 @@ package xyz.czanik.indoorway_countries;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.*;
+import org.mockito.Answers;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.Mock;
 import xyz.czanik.indoorway_countries.countries.CountriesMVP;
-import xyz.czanik.indoorway_countries.countries.CountriesMVP.Model.OnLoadingCompleteListener;
 import xyz.czanik.indoorway_countries.countries.CountriesPresenter;
-import xyz.czanik.indoorway_countries.countries.CountriesRecyclerViewAdapter;
 import xyz.czanik.indoorway_countries.countries.CountryItem;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.notNull;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
