@@ -11,6 +11,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import kotlinx.android.synthetic.main.activity_single_country.*
 import xyz.czanik.indoorway_countries.MessageAppCompatActivity
 import xyz.czanik.indoorway_countries.R
+import xyz.czanik.indoorway_countries.di.single_country.DaggerSingleCountryComponent
+import xyz.czanik.indoorway_countries.di.single_country.SingleCountryModule
 import javax.inject.Inject
 
 class SingleCountryActivity : MessageAppCompatActivity(),SingleCountryMVP.View,OnMapReadyCallback {
@@ -29,13 +31,32 @@ class SingleCountryActivity : MessageAppCompatActivity(),SingleCountryMVP.View,O
 
     override fun onMapReady(map: GoogleMap) {
         val countryPos = CameraUpdateFactory.newLatLng(country.latLng)
+        val zoom = CameraUpdateFactory.zoomTo(5.0F)
+
         map.moveCamera(countryPos)
+        map.moveCamera(zoom)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_country)
         mapView.onCreate(savedInstanceState)
+
+        DaggerSingleCountryComponent.builder()
+            .singleCountryModule(SingleCountryModule(this))
+            .build().inject(this)
+
+        presenter.prepareView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mapView.onStart()
     }
 
     override fun onDestroy() {
