@@ -18,6 +18,8 @@ interface SingleCountryMVP {
     }
 
     interface Model {
+        val country: ComplexCountry
+
         fun loadCountryData(countryName: String,loadingListener: OnLoadingCompleteListener)
     }
 }
