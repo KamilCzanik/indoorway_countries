@@ -12,8 +12,7 @@ class CountriesPresenter @Inject constructor(
 
     val recyclerItemClickListener = object : OnItemClickListener {
         override fun onItemClick(itemPos: Int) {
-            //view.startSingleCountryActivityFor(model.countries[itemPos].name)
-            view.showMessage("Hello $itemPos")
+            view.startSingleCountryActivityFor(view.recyclerAdapter.countries[itemPos].name)
         }
     }
 
