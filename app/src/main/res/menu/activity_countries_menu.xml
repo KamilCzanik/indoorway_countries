@@ -4,5 +4,6 @@
             android:id="@+id/action_search_countries"
             android:title="@string/search"
             app:showAsAction="always"
+            app:actionViewClass="android.support.v7.widget.SearchView"
             android:icon="@drawable/round_search_white_24" />
 </menu>
