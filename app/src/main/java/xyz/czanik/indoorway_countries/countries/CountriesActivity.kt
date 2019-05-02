@@ -16,6 +16,8 @@ import xyz.czanik.indoorway_countries.R
 import xyz.czanik.indoorway_countries.single_country.SingleCountryActivity
 import android.support.v4.view.MenuItemCompat.getActionView
 import android.support.v7.widget.SearchView
+import xyz.czanik.indoorway_countries.di.CountriesModule
+import xyz.czanik.indoorway_countries.di.DaggerCountriesComponent
 import javax.inject.Inject
 
 
@@ -30,6 +32,10 @@ class CountriesActivity : AppCompatActivity(), CountriesMVP.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_countries)
+
+        DaggerCountriesComponent.builder()
+            .countriesModule(CountriesModule(this))
+            .build().inject(this)
     }
 
     override fun onResume() {
