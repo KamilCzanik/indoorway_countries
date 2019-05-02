@@ -5,7 +5,9 @@ import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
 interface SingleCountryMVP {
 
     interface View {
+        val presenter: Presenter
         val countryName: String
+        var country: ComplexCountry
 
         fun showMessage(message: String)
     }
