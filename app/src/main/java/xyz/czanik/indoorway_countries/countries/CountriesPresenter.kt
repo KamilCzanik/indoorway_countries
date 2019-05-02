@@ -33,7 +33,7 @@ class CountriesPresenter @Inject constructor(
     }
 
     override fun onSearch(input: String) {
-        val filteredCountries = model.countries.filter { it.name.contains(input) }
+        val filteredCountries = model.countries.filter { it.name.toLowerCase().contains(input.toLowerCase()) }
         view.recyclerAdapter.countries = filteredCountries
     }
 }
