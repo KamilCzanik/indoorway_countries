@@ -1,4 +1,4 @@
-package xyz.czanik.indoorway_countries.di
+package xyz.czanik.indoorway_countries.di.countries
 
 import android.content.Context
 import dagger.Module

@@ -7,8 +7,8 @@ import android.view.Menu
 import kotlinx.android.synthetic.main.activity_countries.*
 import xyz.czanik.indoorway_countries.MessageAppCompatActivity
 import xyz.czanik.indoorway_countries.R
-import xyz.czanik.indoorway_countries.di.CountriesModule
 import xyz.czanik.indoorway_countries.di.DaggerCountriesComponent
+import xyz.czanik.indoorway_countries.di.countries.CountriesModule
 import xyz.czanik.indoorway_countries.single_country.SingleCountryActivity
 import javax.inject.Inject
 
