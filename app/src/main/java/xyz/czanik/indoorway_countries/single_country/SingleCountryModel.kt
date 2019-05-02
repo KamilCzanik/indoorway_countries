@@ -31,7 +31,7 @@ class SingleCountryModel @Inject constructor(private val context: Context) : Sin
             null,
             Response.Listener<JSONObject> { json ->
                 try {
-                    country = parseToComplexCountry(json,countryCode)
+                    country = parseJsonToComplexCountry(json,countryCode)
                     loadingListener.onComplete()
                 } catch (e: JSONException) { loadingListener.onFailure(e.message!!) }
             },
@@ -40,7 +40,7 @@ class SingleCountryModel @Inject constructor(private val context: Context) : Sin
         Volley.newRequestQueue(context).add(request)
     }
 
-    private fun parseToComplexCountry(jsonObject: JSONObject, countryCode: String) =
+    private fun parseJsonToComplexCountry(jsonObject: JSONObject, countryCode: String) =
         ComplexCountry(
             jsonObject.getString(NAME),
             jsonObject.getString(FLAG),

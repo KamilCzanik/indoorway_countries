@@ -7,6 +7,7 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import org.json.JSONException
+import org.json.JSONObject
 import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
 import javax.inject.Inject
 
@@ -26,11 +27,7 @@ class CountriesModel @Inject constructor(private val context: Context) : Countri
             Response.Listener<JSONArray> { jsonArray ->
                 try {
                     for(i in 0 until jsonArray.length()) {
-                        val json = jsonArray.getJSONObject(i)
-                        countries += CountryItem(
-                            json.getString(NAME),
-                            json.getString(FLAG),
-                            json.getString(CODE))
+                        countries += parseJsonToCountryItem(jsonArray.getJSONObject(i))
                     }
                     loadingListener.onComplete()
                 } catch (e: JSONException) { loadingListener.onFailure(e.message!!) }
@@ -39,4 +36,10 @@ class CountriesModel @Inject constructor(private val context: Context) : Countri
 
         Volley.newRequestQueue(context).add(request)
     }
+
+    private fun parseJsonToCountryItem(json: JSONObject) =
+        CountryItem(
+        json.getString(NAME),
+        json.getString(FLAG),
+        json.getString(CODE))
 }
