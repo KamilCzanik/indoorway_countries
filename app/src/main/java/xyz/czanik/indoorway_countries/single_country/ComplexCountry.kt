@@ -4,7 +4,7 @@ import com.google.android.gms.maps.model.LatLng
 
 data class ComplexCountry(
     val name: String = "",
-    val flag: String = "",
+    val flagUri: String = "",
     val code: String = "",
     val capitalCity: String = "",
     val region: String = "",

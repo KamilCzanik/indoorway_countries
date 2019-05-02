@@ -10,7 +10,7 @@ class CountriesPresenter @Inject constructor(
 
     val recyclerItemClickListener = object : OnItemClickListener {
         override fun onItemClick(itemPos: Int) {
-            view.startSingleCountryActivityFor(view.recyclerAdapter.countries[itemPos].countryCode)
+            view.startSingleCountryActivityFor(view.recyclerAdapter.countries[itemPos].code)
         }
     }
 
