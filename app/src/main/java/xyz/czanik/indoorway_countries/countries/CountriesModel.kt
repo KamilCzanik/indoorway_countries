@@ -1,13 +1,13 @@
 package xyz.czanik.indoorway_countries.countries
 
 import android.content.Context
-import com.android.volley.Request
 import com.android.volley.Request.Method.GET
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import org.json.JSONException
+import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
 import javax.inject.Inject
 
 class CountriesModel @Inject constructor(private val context: Context) : CountriesMVP.Model {
@@ -17,7 +17,7 @@ class CountriesModel @Inject constructor(private val context: Context) : Countri
     private val FLAG = "flag"
     private val countriesUrl = "https://restcountries.eu/rest/v2/all?fields=$NAME;$FLAG"
 
-    override fun loadCountries(loadingListener: CountriesMVP.Model.OnLoadingCompleteListener) {
+    override fun loadCountries(loadingListener: OnLoadingCompleteListener) {
         val request = JsonArrayRequest(
             GET,
             countriesUrl,
