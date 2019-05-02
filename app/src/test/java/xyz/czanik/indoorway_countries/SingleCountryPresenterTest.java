@@ -36,7 +36,7 @@ public class SingleCountryPresenterTest {
         SUT.prepareView();
 
         verify(model,times(1)).loadCountryData(stringCaptor.capture(),listenerCaptor.capture());
-        assertEquals(view.getCountryName(),stringCaptor.getValue());
+        assertEquals(view.getCountryCode(),stringCaptor.getValue());
         assertEquals(SUT.getLoadingListener(),listenerCaptor.getValue());
     }
 

@@ -18,7 +18,7 @@ import javax.inject.Inject
 class SingleCountryActivity : MessageAppCompatActivity(),SingleCountryMVP.View,OnMapReadyCallback {
 
     @Inject override lateinit var presenter: SingleCountryMVP.Presenter
-    override val countryName by lazy { intent.getStringExtra(INTENT_COUNTRY_NAME) as String }
+    override val countryCode by lazy { intent.getStringExtra(INTENT_COUNTRY_CODE) as String }
 
     override var country: ComplexCountry = ComplexCountry()
        set(country) {
@@ -65,10 +65,10 @@ class SingleCountryActivity : MessageAppCompatActivity(),SingleCountryMVP.View,O
     }
 
     companion object {
-        private const val INTENT_COUNTRY_NAME = "country_name"
-        fun createIntent(context: Context,name: String) : Intent {
+        private const val INTENT_COUNTRY_CODE = "country_code"
+        fun createIntent(context: Context,countryCode: String) : Intent {
             return Intent(context, SingleCountryActivity::class.java).apply {
-                putExtra(INTENT_COUNTRY_NAME, name)
+                putExtra(INTENT_COUNTRY_CODE, countryCode)
             }
         }
     }

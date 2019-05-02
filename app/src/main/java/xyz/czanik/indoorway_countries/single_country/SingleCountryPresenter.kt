@@ -18,6 +18,6 @@ class SingleCountryPresenter @Inject constructor(
     }
 
     override fun prepareView() {
-        model.loadCountryData(view.countryName,loadingListener)
+        model.loadCountryData(view.countryCode,loadingListener)
     }
 }

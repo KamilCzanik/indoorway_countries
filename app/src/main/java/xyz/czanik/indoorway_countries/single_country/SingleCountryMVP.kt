@@ -6,7 +6,7 @@ interface SingleCountryMVP {
 
     interface View {
         val presenter: Presenter
-        val countryName: String
+        val countryCode: String
         var country: ComplexCountry
 
         fun showMessage(message: String)
@@ -22,6 +22,6 @@ interface SingleCountryMVP {
     interface Model {
         val country: ComplexCountry
 
-        fun loadCountryData(countryName: String,loadingListener: OnLoadingCompleteListener)
+        fun loadCountryData(countryCode: String,loadingListener: OnLoadingCompleteListener)
     }
 }

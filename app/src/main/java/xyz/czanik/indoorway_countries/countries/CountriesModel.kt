@@ -15,7 +15,8 @@ class CountriesModel @Inject constructor(private val context: Context) : Countri
 
     private val NAME = "name"
     private val FLAG = "flag"
-    private val countriesUrl = "https://restcountries.eu/rest/v2/all?fields=$NAME;$FLAG"
+    private val CODE = "alpha3Code"
+    private val countriesUrl = "https://restcountries.eu/rest/v2/all?fields=$NAME;$FLAG;$CODE"
 
     override fun loadCountries(loadingListener: OnLoadingCompleteListener) {
         val request = JsonArrayRequest(
@@ -25,10 +26,11 @@ class CountriesModel @Inject constructor(private val context: Context) : Countri
             Response.Listener<JSONArray> { jsonArray ->
                 try {
                     for(i in 0 until jsonArray.length()) {
-                        val country = jsonArray.getJSONObject(i)
-                        val name = country.getString(NAME)
-                        val flag = country.getString(FLAG)
-                        countries += CountryItem(name,flag)
+                        val json = jsonArray.getJSONObject(i)
+                        countries += CountryItem(
+                            json.getString(NAME),
+                            json.getString(FLAG),
+                            json.getString(CODE))
                     }
                     loadingListener.onComplete()
                 } catch (e: JSONException) { loadingListener.onFailure(e.message!!) }
