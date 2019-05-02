@@ -44,20 +44,12 @@ public class CountriesPresenterTest {
     public void whenRecyclerItemClickListenerOnItemClickThenStartSingleCountryActivity() {
         int pos = 2;
         String countryName = "Poland";
-        when(model.getCountries().get(pos)).thenReturn(new CountryItem(countryName,"url"));
+        when(view.getRecyclerAdapter().getCountries().get(pos)).thenReturn(new CountryItem(countryName,"url"));
 
         SUT.getRecyclerItemClickListener().onItemClick(pos);
 
         verify(view,times(1)).startSingleCountryActivityFor(stringCaptor.capture());
         assertEquals(countryName,stringCaptor.getValue());
-    }
-
-    @Test
-    public void whenLoadingCompleteListenerOnCompleteThenSetDataToView() {
-        SUT.getLoadingCompleteListener().onComplete();
-
-        verify(view.getRecyclerAdapter(),times(1)).setCountries(countriesListCaptor.capture());
-        assertEquals(model.getCountries(),countriesListCaptor.getValue());
     }
 
     @Test
