@@ -1,11 +1,11 @@
 package xyz.czanik.indoorway_countries.countries
 
-import android.net.Uri
+import android.net.Uri.parse
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou.justLoadImage
 import kotlinx.android.synthetic.main.country_item.view.*
 import xyz.czanik.indoorway_countries.R
 
@@ -29,9 +29,11 @@ class CountriesRecyclerViewAdapter(
     override fun getItemCount() = countries.size
 
     override fun onBindViewHolder(viewholder: ViewHolder, pos: Int) {
-        val view = viewholder.itemView
-        view.countryItemName.text = countries[pos].name
-        GlideToVectorYou.justLoadImage(activity, Uri.parse(countries[pos].flagUri), view.countryItemFlag)
+        val country = countries[pos]
+        with(viewholder.itemView) {
+            countryItemNameView.text = country.name
+            justLoadImage(activity, parse(country.flagUri),countryItemFlagView)
+        }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

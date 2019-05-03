@@ -57,7 +57,7 @@ class CountriesActivity : MessageAppCompatActivity(), CountriesMVP.View {
         return true
     }
 
-    override fun startSingleCountryActivityFor(name: String) {
-        startActivity(SingleCountryActivity.createIntent(this,name))
+    override fun startSingleCountryActivityFor(countryCode: String) {
+        startActivity(SingleCountryActivity.createIntent(this,countryCode))
     }
 }
