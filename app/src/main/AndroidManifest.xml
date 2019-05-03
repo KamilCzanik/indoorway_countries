@@ -14,7 +14,8 @@
 
         <meta-data android:name="com.google.android.geo.API_KEY"
                    android:value="AIzaSyCJAPreu_p3vRrHw2gG6rtZippD6yESjZM"/>
-        <activity android:name=".single_country.SingleCountryActivity">
+        <activity android:name=".single_country.SingleCountryActivity"
+        android:parentActivityName=".countries.CountriesActivity">
         </activity>
         <activity android:name=".countries.CountriesActivity">
             <intent-filter>

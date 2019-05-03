@@ -24,7 +24,7 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
        set(country) {
            field = country
            with(country) {
-               countryNameView.text = name
+               supportActionBar?.title = name
                countryDetails.text = details
                justLoadImage(this@SingleCountryActivity, parse(flagUri), countryFlagView)
            }
@@ -40,7 +40,7 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        supportActionBar?.setHomeButtonEnabled(true)
         injectDependencies()
         presenter.prepareView()
     }
