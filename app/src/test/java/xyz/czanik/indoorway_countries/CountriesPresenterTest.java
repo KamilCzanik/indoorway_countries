@@ -10,8 +10,6 @@ import xyz.czanik.indoorway_countries.countries.CountriesMVP;
 import xyz.czanik.indoorway_countries.countries.CountriesPresenter;
 import xyz.czanik.indoorway_countries.countries.CountryItem;
 
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -24,7 +22,6 @@ public class CountriesPresenterTest {
 
     @Captor ArgumentCaptor<OnLoadingCompleteListener> loadingListenerCaptor;
     @Captor ArgumentCaptor<String> stringCaptor;
-    @Captor ArgumentCaptor<List<CountryItem>> countriesListCaptor;
 
     @Before
     public void setUp() {
@@ -43,13 +40,13 @@ public class CountriesPresenterTest {
     @Test
     public void whenRecyclerItemClickListenerOnItemClickThenStartSingleCountryActivity() {
         int pos = 2;
-        String countryName = "Poland";
-        when(view.getRecyclerAdapter().getCountries().get(pos)).thenReturn(new CountryItem(countryName,"url"));
+        String countryCode = "POL";
+        when(view.getRecyclerAdapter().getCountries().get(pos)).thenReturn(new CountryItem("Poland","url",countryCode));
 
         SUT.getRecyclerItemClickListener().onItemClick(pos);
 
         verify(view,times(1)).startSingleCountryActivityFor(stringCaptor.capture());
-        assertEquals(countryName,stringCaptor.getValue());
+        assertEquals(countryCode,stringCaptor.getValue());
     }
 
     @Test
