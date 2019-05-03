@@ -26,7 +26,7 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
            with(country) {
                countryNameView.text = name
                countryDetails.text = details
-               justLoadImage(this@SingleCountryActivity, parse(flagUri), countryFlag)
+               justLoadImage(this@SingleCountryActivity, parse(flagUri), countryFlagView)
            }
            mapView.getMapAsync(this)
         }

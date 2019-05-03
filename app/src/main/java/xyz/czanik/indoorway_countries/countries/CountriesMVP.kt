@@ -8,7 +8,7 @@ interface CountriesMVP {
         val presenter: Presenter
         var recyclerAdapter: CountriesRecyclerViewAdapter
 
-        fun startSingleCountryActivityFor(name: String)
+        fun startSingleCountryActivityFor(countryCode: String)
         fun showMessage(message: String)
     }
 
