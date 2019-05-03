@@ -47,8 +47,8 @@ class SingleCountryModel @Inject constructor(private val context: Context) : Sin
             countryCode,
             jsonObject.getString(CAPITAL),
             jsonObject.getString(REGION),
-            jsonObject.getJSONArray(LATLNG).getLatLng())
+            jsonObject.getJSONArray(LATLNG).toLatLng())
 
 }
 
-fun JSONArray.getLatLng() = if(length() != 0) LatLng(getDouble(0),getDouble(1)) else LatLng(0.0,0.0)
+fun JSONArray.toLatLng() = if(length() != 0) LatLng(getDouble(0),getDouble(1)) else LatLng(0.0,0.0)
