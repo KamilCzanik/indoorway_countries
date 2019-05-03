@@ -22,8 +22,8 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
 
     override var country: ComplexCountry = ComplexCountry()
        set(country) {
+           field = country
            with(country) {
-               field = this
                countryNameView.text = name
                countryDetails.text = details
                justLoadImage(this@SingleCountryActivity, parse(flagUri), countryFlag)
@@ -41,15 +41,20 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        DaggerSingleCountryComponent.builder()
-            .singleCountryModule(SingleCountryModule(this))
-            .build().inject(this)
-
+        injectDependencies()
         presenter.prepareView()
     }
 
+    private fun injectDependencies() {
+        DaggerSingleCountryComponent.builder()
+            .singleCountryModule(SingleCountryModule(this))
+            .build().inject(this)
+    }
+
     companion object {
+
         private const val INTENT_COUNTRY_CODE = "country_code"
+
         fun createIntent(context: Context,countryCode: String) : Intent {
             return Intent(context, SingleCountryActivity::class.java).apply {
                 putExtra(INTENT_COUNTRY_CODE, countryCode)
