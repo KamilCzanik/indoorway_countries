@@ -22,9 +22,10 @@ class SingleCountryModel @Inject constructor(private val context: Context) : Sin
     private val REGION = "region"
     private val LATLNG = "latlng"
     private val CAPITAL = "capital"
+    private val POPULATION = "population"
 
     override fun loadCountryData(countryCode: String, loadingListener: OnLoadingCompleteListener) {
-        val countryUri = "https://restcountries.eu/rest/v2/alpha/$countryCode?fields=$NAME;$FLAG;$REGION;$CAPITAL;$LATLNG"
+        val countryUri = "https://restcountries.eu/rest/v2/alpha/$countryCode?fields=$NAME;$FLAG;$REGION;$CAPITAL;$LATLNG;$POPULATION"
 
         val request = JsonObjectRequest(
             Request.Method.GET,
@@ -49,6 +50,7 @@ class SingleCountryModel @Inject constructor(private val context: Context) : Sin
             countryCode,
             jsonObject.getStringOrDefault(CAPITAL,default),
             jsonObject.getStringOrDefault(REGION,default),
+            jsonObject.getStringOrDefault(POPULATION,default),
             jsonObject.getJSONArray(LATLNG).toLatLng())
     }
 

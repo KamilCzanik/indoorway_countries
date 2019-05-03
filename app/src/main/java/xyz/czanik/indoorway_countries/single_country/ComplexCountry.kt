@@ -8,11 +8,12 @@ data class ComplexCountry(
     val code: String = "",
     val capitalCity: String = "",
     val region: String = "",
+    val population: String = "",
     val latLng: LatLng = LatLng(0.0,0.0)) {
 
     val details =
                 " Code : $code \n" +
                 " Capital city : $capitalCity \n" +
                 " Region : $region \n" +
-                " co-ordinates : ${latLng.latitude} | ${latLng.longitude}"
+                " Population : $population"
 }
