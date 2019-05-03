@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "133525667522",
+    "firebase_url": "https://indoorwaycountries.firebaseio.com",
+    "project_id": "indoorwaycountries",
+    "storage_bucket": "indoorwaycountries.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133525667522:android:b5deda238fa7dcc2",
+        "android_client_info": {
+          "package_name": "xyz.czanik.indoorway_countries"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133525667522-dg2i7s5lvkiqv0g7c67d39nheujjkusq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "xyz.czanik.indoorway_countries",
+            "certificate_hash": "85e39159f7bc6e71ecdfd27fef0eb99d6696aa3a"
+          }
+        },
+        {
+          "client_id": "133525667522-npcettr93gg9olfl1719hhvlj07527l6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxpSIpqHa_4jh3Ng8vUmOxzqq6vJyvIRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133525667522-npcettr93gg9olfl1719hhvlj07527l6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
