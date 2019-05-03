@@ -4,19 +4,33 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="wrap_content">
 
-    <ImageView
+    <android.support.v7.widget.CardView
             android:layout_width="48dp"
-            android:layout_height="48dp" app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
-            android:id="@+id/countryItemFlagView" android:layout_marginTop="8dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="4dp"
+            app:cardBackgroundColor="#adabab"
+            android:id="@+id/flagBackground"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp">
+
+        <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
+                android:id="@+id/countryItemFlagView" />
+
+    </android.support.v7.widget.CardView>
+
     <TextView
             android:text="country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/countryItemNameView"
-            app:layout_constraintStart_toEndOf="@+id/countryItemFlagView" android:layout_marginStart="8dp"
-            android:textSize="14sp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toEndOf="@+id/flagBackground" android:layout_marginStart="8dp"
+            android:textSize="18sp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
 </android.support.constraint.ConstraintLayout>
