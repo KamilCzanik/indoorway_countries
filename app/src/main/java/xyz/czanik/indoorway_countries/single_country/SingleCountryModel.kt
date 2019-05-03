@@ -10,6 +10,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
+import xyz.czanik.indoorway_countries.R
 import javax.inject.Inject
 
 class SingleCountryModel @Inject constructor(private val context: Context) : SingleCountryMVP.Model {
@@ -40,15 +41,20 @@ class SingleCountryModel @Inject constructor(private val context: Context) : Sin
         Volley.newRequestQueue(context).add(request)
     }
 
-    private fun parseJsonToComplexCountry(jsonObject: JSONObject, countryCode: String) =
-        ComplexCountry(
-            jsonObject.getString(NAME),
-            jsonObject.getString(FLAG),
+    private fun parseJsonToComplexCountry(jsonObject: JSONObject, countryCode: String) : ComplexCountry {
+        val default = context.resources.getString(R.string.unknown)
+        return ComplexCountry(
+            jsonObject.getStringOrDefault(NAME,default),
+            jsonObject.getStringOrDefault(FLAG,default),
             countryCode,
-            jsonObject.getString(CAPITAL),
-            jsonObject.getString(REGION),
+            jsonObject.getStringOrDefault(CAPITAL,default),
+            jsonObject.getStringOrDefault(REGION,default),
             jsonObject.getJSONArray(LATLNG).toLatLng())
+    }
+
 
 }
 
 fun JSONArray.toLatLng() = if(length() != 0) LatLng(getDouble(0),getDouble(1)) else LatLng(0.0,0.0)
+
+fun JSONObject.getStringOrDefault(key: String,default: String): String = if(getString(key).isNotEmpty()) getString(key) else default
