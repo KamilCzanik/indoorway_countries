@@ -3,4 +3,5 @@
     <string name="search">Search</string>
     <string name="unknown">Unknow</string>
     <string name="country_details">Country details</string>
+    <string name="country">Country</string>
 </resources>
