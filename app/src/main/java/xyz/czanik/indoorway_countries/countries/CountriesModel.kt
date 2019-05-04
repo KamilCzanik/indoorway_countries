@@ -11,6 +11,7 @@ import org.json.JSONObject
 import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
 import javax.inject.Inject
 
+/** Klasa odpowiedzialna za dostarczenie danych pobranych z REST API*/
 class CountriesModel @Inject constructor(private val context: Context) : CountriesMVP.Model {
 
     override val countries = ArrayList<CountryItem>()

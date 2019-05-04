@@ -2,6 +2,7 @@ package xyz.czanik.indoorway_countries.countries
 
 import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
 
+/** Kontrakt MVP definiujący zadania każdego elementu Modelu,View i Presentera*/
 interface CountriesMVP {
 
     interface View {

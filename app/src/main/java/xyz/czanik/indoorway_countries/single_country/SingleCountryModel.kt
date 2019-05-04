@@ -13,6 +13,7 @@ import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
 import xyz.czanik.indoorway_countries.R
 import javax.inject.Inject
 
+/** Klasa odpowiedzialna za dostarczenie danych pobranych z REST API*/
 class SingleCountryModel @Inject constructor(private val context: Context) : SingleCountryMVP.Model {
 
     override lateinit var country: ComplexCountry
@@ -56,6 +57,8 @@ class SingleCountryModel @Inject constructor(private val context: Context) : Sin
 
 
 }
+
+/** Opakowanie kodu służącego do wydobycia danych z JSON w celu zwiększenia czytelności*/
 
 fun JSONArray.toLatLng() = if(length() != 0) LatLng(getDouble(0),getDouble(1)) else LatLng(0.0,0.0)
 

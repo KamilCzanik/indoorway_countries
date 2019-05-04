@@ -15,6 +15,8 @@ import xyz.czanik.indoorway_countries.di.single_country.DaggerSingleCountryCompo
 import xyz.czanik.indoorway_countries.di.single_country.SingleCountryModule
 import javax.inject.Inject
 
+/** Aktywność wyświetlająca informacje o kraju.
+ * Implementuje funkcjonalność SingleCountryMVP.View*/
 class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMapReadyCallback {
 
     @Inject override lateinit var presenter: SingleCountryMVP.Presenter

@@ -2,6 +2,7 @@ package xyz.czanik.indoorway_countries.single_country
 
 import com.google.android.gms.maps.model.LatLng
 
+/** Klasa przechowująca podstawowe informacje potrzebne do wyświetlenie informacji kraju w aktywności*/
 data class ComplexCountry(
     val name: String = "",
     val flagUri: String = "",

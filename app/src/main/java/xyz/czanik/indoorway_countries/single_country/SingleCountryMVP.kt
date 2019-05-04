@@ -2,6 +2,7 @@ package xyz.czanik.indoorway_countries.single_country
 
 import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
 
+/** Kontrakt MVP definiujący zadania każdego elementu Modelu,View i Presentera*/
 interface SingleCountryMVP {
 
     interface View {

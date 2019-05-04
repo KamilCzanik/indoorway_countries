@@ -3,6 +3,8 @@ package xyz.czanik.indoorway_countries
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_single_country.*
 
+/** Abstrakcyjna klasa mająca zwiększyć czytelność kodu klasy jej rozszerzającej
+ * poprzez wcześniejszą implementację metod związanych z cyklem życia mapView*/
 abstract class MapAppCompatActivity : MessageAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

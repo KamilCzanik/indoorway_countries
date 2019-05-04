@@ -3,6 +3,7 @@ package xyz.czanik.indoorway_countries.single_country
 import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
 import javax.inject.Inject
 
+/** Presenter odpowiedzialny za logikę oraz spojenie funkcjonalności View i Modelu dostarczającego danych*/
 class SingleCountryPresenter @Inject constructor(
     override val view: SingleCountryMVP.View,
     override val model: SingleCountryMVP.Model) : SingleCountryMVP.Presenter {

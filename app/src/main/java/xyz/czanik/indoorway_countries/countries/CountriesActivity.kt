@@ -12,7 +12,8 @@ import xyz.czanik.indoorway_countries.di.countries.DaggerCountriesComponent
 import xyz.czanik.indoorway_countries.single_country.SingleCountryActivity
 import javax.inject.Inject
 
-
+/** Aktywność wyświetlająca listę krajów.
+ * Implementuje funkcjonalność CountriesMVP.View*/
 class CountriesActivity : MessageAppCompatActivity(), CountriesMVP.View {
 
     @Inject override lateinit var presenter: CountriesMVP.Presenter
@@ -38,6 +39,8 @@ class CountriesActivity : MessageAppCompatActivity(), CountriesMVP.View {
         countriesRecyclerView.setHasFixedSize(true)
     }
 
+    /** Stworzenie menu aktywności
+     * oraz przypisanie do searchView adaptera, który deleguje działanie do odpowiedzialnego za logikę presentera*/
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.activity_countries_menu,menu)
         val myActionMenuItem = menu?.findItem(R.id.action_search_countries)
