@@ -8,10 +8,13 @@ class CountriesPresenter @Inject constructor(
     override val view: CountriesMVP.View,
     override val model: CountriesMVP.Model) : CountriesMVP.Presenter {
 
-    val recyclerItemClickListener = object : OnItemClickListener {
-        override fun onItemClick(itemPos: Int) {
-            view.startSingleCountryActivityFor(view.recyclerAdapter.countries[itemPos].code)
-        }
+    override fun onSearch(input: String) {
+        val filteredCountries = model.countries.getCountriesWith(input)
+        view.recyclerAdapter.countries = filteredCountries
+    }
+
+    override fun prepareView() {
+        model.loadCountries(loadingCompleteListener)
     }
 
     val loadingCompleteListener = object : OnLoadingCompleteListener {
@@ -25,14 +28,12 @@ class CountriesPresenter @Inject constructor(
         }
     }
 
-    override fun prepareView() {
-        model.loadCountries(loadingCompleteListener)
+    val recyclerItemClickListener = object : OnItemClickListener {
+        override fun onItemClick(itemPos: Int) {
+            view.startSingleCountryActivityFor(view.recyclerAdapter.countries[itemPos].code)
+        }
     }
 
-    override fun onSearch(input: String) {
-        val filteredCountries = model.countries.getCountriesWith(input)
-        view.recyclerAdapter.countries = filteredCountries
-    }
 }
 
 fun List<CountryItem>.getCountriesWith(string: String) = filter { it.name.toLowerCase().contains(string.toLowerCase()) }

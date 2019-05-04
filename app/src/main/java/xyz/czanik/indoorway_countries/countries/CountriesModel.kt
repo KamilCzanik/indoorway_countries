@@ -12,6 +12,7 @@ import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
 import javax.inject.Inject
 
 class CountriesModel @Inject constructor(private val context: Context) : CountriesMVP.Model {
+
     override val countries = ArrayList<CountryItem>()
 
     private val NAME = "name"
@@ -26,9 +27,9 @@ class CountriesModel @Inject constructor(private val context: Context) : Countri
             null,
             Response.Listener<JSONArray> { jsonArray ->
                 try {
-                    for(i in 0 until jsonArray.length()) {
+                    for(i in 0 until jsonArray.length())
                         countries += parseJsonToCountryItem(jsonArray.getJSONObject(i))
-                    }
+
                     loadingListener.onComplete()
                 } catch (e: JSONException) { loadingListener.onFailure(e.message!!) }
             },

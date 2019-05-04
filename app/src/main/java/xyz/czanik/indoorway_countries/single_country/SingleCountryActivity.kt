@@ -21,9 +21,9 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
     override val countryCode by lazy { intent.getStringExtra(INTENT_COUNTRY_CODE) as String }
 
     override var country: ComplexCountry = ComplexCountry()
-       set(country) {
-           field = country
-           with(country) {
+       set(value) {
+           field = value
+           with(/*country*/value) {
                supportActionBar?.title = name
                countryDetails.text = details
                justLoadImage(this@SingleCountryActivity, parse(flagUri), countryFlagView)

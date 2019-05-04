@@ -19,7 +19,7 @@ class CountriesActivity : MessageAppCompatActivity(), CountriesMVP.View {
 
     override var recyclerAdapter: CountriesRecyclerViewAdapter
         get() = countriesRecyclerView.adapter as CountriesRecyclerViewAdapter
-        set(adapter) { countriesRecyclerView.adapter = adapter}
+        set(value) { countriesRecyclerView.adapter = value}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

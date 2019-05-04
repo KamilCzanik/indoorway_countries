@@ -14,13 +14,9 @@ class CountriesRecyclerViewAdapter(
     private val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<CountriesRecyclerViewAdapter.ViewHolder>() {
 
     var countries = listOf<CountryItem>()
-    set(countries) {
-        field = countries
+    set(value) {
+        field = value
         notifyDataSetChanged()
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(itemPos: Int)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int) =
@@ -38,5 +34,9 @@ class CountriesRecyclerViewAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init { itemView.setOnClickListener { onItemClickListener.onItemClick(adapterPosition) } }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(itemPos: Int)
     }
 }
