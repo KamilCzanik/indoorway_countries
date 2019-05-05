@@ -24,8 +24,11 @@ class CountriesPresenter @Inject constructor(
      *  w nim kodu*/
     val loadingCompleteListener = object : OnLoadingCompleteListener {
         override fun onComplete() {
-            view.recyclerAdapter = CountriesRecyclerViewAdapter(view as CountriesActivity,recyclerItemClickListener)
-            view.recyclerAdapter.countries = model.countries
+            with(view) {
+                recyclerAdapter = CountriesRecyclerViewAdapter(view as CountriesActivity,recyclerItemClickListener)
+                recyclerAdapter.countries = model.countries
+                setLoadingPanelVisibility(false)
+            }
         }
 
         override fun onFailure(message: String) {

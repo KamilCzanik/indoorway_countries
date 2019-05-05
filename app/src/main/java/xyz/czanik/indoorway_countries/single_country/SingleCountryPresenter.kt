@@ -12,7 +12,10 @@ class SingleCountryPresenter @Inject constructor(
 
     val loadingListener = object : OnLoadingCompleteListener {
 
-        override fun onComplete() { view.country = model.country }
+        override fun onComplete() {
+            view.country = model.country
+            view.setLoadingPanelVisibility(false)
+        }
 
         override fun onFailure(message: String) { view.showMessage(message) }
     }
