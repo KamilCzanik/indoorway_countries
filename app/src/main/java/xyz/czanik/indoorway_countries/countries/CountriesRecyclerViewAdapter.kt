@@ -28,7 +28,7 @@ class CountriesRecyclerViewAdapter(
         val country = countries[pos]
         with(viewholder.itemView) {
             countryItemNameView.text = country.name
-            justLoadImage(activity, parse(country.flagUri),countryItemFlagView)
+            justLoadImage(activity, parse(country.flag),countryItemFlagView)
         }
     }
 

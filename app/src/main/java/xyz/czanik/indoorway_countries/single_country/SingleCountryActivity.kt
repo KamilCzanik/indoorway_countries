@@ -28,14 +28,14 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
            with(/*country*/value) {
                supportActionBar?.title = name
                countryDetails.text = details
-               justLoadImage(this@SingleCountryActivity, parse(flagUri), countryFlagView)
+               justLoadImage(this@SingleCountryActivity, parse(flag), countryFlagView)
            }
            mapView.getMapAsync(this)
         }
 
     override fun onMapReady(map: GoogleMap) {
         with(map) {
-            moveCamera(newLatLng(country.latLng))
+            moveCamera(newLatLng(country.getLatLng()))
             moveCamera(zoomTo(5.0F))
         }
     }
