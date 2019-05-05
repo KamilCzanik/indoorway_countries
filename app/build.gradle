@@ -34,8 +34,9 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.13.0'
     testImplementation 'org.mockito:mockito-inline:2.13.0'
 
-    //http
+    //http & JSON
     implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.beust:klaxon:5.0.5'
 
     //UI
     implementation 'com.github.2coffees1team:GlideToVectorYou:v1.2.0'
