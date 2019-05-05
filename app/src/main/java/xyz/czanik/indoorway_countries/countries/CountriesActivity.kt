@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.Menu
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import kotlinx.android.synthetic.main.activity_countries.*
 import xyz.czanik.indoorway_countries.MessageAppCompatActivity
 import xyz.czanik.indoorway_countries.R
@@ -62,5 +64,9 @@ class CountriesActivity : MessageAppCompatActivity(), CountriesMVP.View {
 
     override fun startSingleCountryActivityFor(countryCode: String) {
         startActivity(SingleCountryActivity.createIntent(this,countryCode))
+    }
+
+    override fun setLoadingPanelVisibility(visible: Boolean) {
+        loadingPanel.visibility = if(visible) VISIBLE else GONE
     }
 }

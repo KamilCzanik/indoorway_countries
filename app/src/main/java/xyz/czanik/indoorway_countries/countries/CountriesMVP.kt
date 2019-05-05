@@ -1,11 +1,12 @@
 package xyz.czanik.indoorway_countries.countries
 
 import xyz.czanik.indoorway_countries.OnLoadingCompleteListener
+import xyz.czanik.indoorway_countries.ViewWithLoadingPanel
 
 /** Kontrakt MVP definiujący zadania każdego elementu Modelu,View i Presentera*/
 interface CountriesMVP {
 
-    interface View {
+    interface View : ViewWithLoadingPanel{
         val presenter: Presenter
         var recyclerAdapter: CountriesRecyclerViewAdapter
 

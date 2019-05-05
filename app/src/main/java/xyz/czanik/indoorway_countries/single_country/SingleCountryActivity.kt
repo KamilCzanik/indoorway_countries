@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri.parse
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou.justLoadImage
 import com.google.android.gms.maps.CameraUpdateFactory.newLatLng
 import com.google.android.gms.maps.CameraUpdateFactory.zoomTo
@@ -51,6 +53,12 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
         DaggerSingleCountryComponent.builder()
             .singleCountryModule(SingleCountryModule(this))
             .build().inject(this)
+    }
+
+    override fun setLoadingPanelVisibility(visible: Boolean) {
+        val visibility = if(visible) VISIBLE else GONE
+        bigFlagLoadingPanel.visibility = visibility
+        mapLoadingPanel.visibility = visibility
     }
 
     companion object {
