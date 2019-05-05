@@ -15,11 +15,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+
         <ImageView
                 android:id="@+id/countryFlagView"
                 style="@style/flagImageView"
                 android:layout_width="96dp"
                 android:layout_height="96dp" />
+
+        <RelativeLayout
+                android:id="@+id/bigFlagLoadingPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:colorBackground"
+                android:gravity="center" >
+
+            <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true" />
+        </RelativeLayout>
+
     </android.support.v7.widget.CardView>
 
 
@@ -49,6 +64,20 @@
                 android:id="@+id/mapView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+
+        <RelativeLayout
+                android:id="@+id/mapLoadingPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:colorBackground"
+                android:gravity="center" >
+
+            <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true" />
+        </RelativeLayout>
+
     </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>
