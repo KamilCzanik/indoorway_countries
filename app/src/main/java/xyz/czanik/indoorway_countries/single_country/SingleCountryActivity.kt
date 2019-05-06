@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri.parse
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou.justLoadImage
@@ -53,6 +54,14 @@ class SingleCountryActivity : MapAppCompatActivity(),SingleCountryMVP.View,OnMap
         DaggerSingleCountryComponent.builder()
             .singleCountryModule(SingleCountryModule(this))
             .build().inject(this)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun setLoadingPanelVisibility(visible: Boolean) {
